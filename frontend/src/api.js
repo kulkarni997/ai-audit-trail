@@ -25,3 +25,7 @@ export function getViolations() {
 export function traceData(dataId) {
   return request(`/trace/data/${dataId}`)
 }
+
+export function getExposedAgents() {
+  return request('/violations/exposed-agents')
+}
