@@ -15,13 +15,13 @@ router.get('/', async (req, res, next) => {
       ? `MATCH (agent:Agent)-[:EXECUTED]->(action:Action {status: $status})-[:ACCESSED]->(data:DataResource)
          RETURN agent.name AS agentName, action.id AS id, action.type AS type,
                 action.status AS status, action.timestamp AS timestamp,
-                data.name AS dataName, data.sensitivity AS sensitivity
+                data.id AS dataId, data.name AS dataName, data.sensitivity AS sensitivity
          ORDER BY action.timestamp DESC
          LIMIT $limit`
       : `MATCH (agent:Agent)-[:EXECUTED]->(action:Action)-[:ACCESSED]->(data:DataResource)
          RETURN agent.name AS agentName, action.id AS id, action.type AS type,
                 action.status AS status, action.timestamp AS timestamp,
-                data.name AS dataName, data.sensitivity AS sensitivity
+                data.id AS dataId, data.name AS dataName, data.sensitivity AS sensitivity
          ORDER BY action.timestamp DESC
          LIMIT $limit`;
 
@@ -33,6 +33,7 @@ router.get('/', async (req, res, next) => {
       type: r.get('type'),
       status: r.get('status'),
       timestamp: r.get('timestamp'),
+      dataId: r.get('dataId'),
       dataName: r.get('dataName'),
       sensitivity: r.get('sensitivity'),
     }));

@@ -21,3 +21,7 @@ export function getActions() {
 export function getViolations() {
   return request('/violations')
 }
+
+export function traceData(dataId) {
+  return request(`/trace/data/${dataId}`)
+}
