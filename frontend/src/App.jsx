@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react'
-import { getActions, getAgents, getViolations, traceData } from './api'
+import {
+  getActions,
+  getAgents,
+  getViolations,
+  traceData,
+  getExposedAgents,
+} from './api'
 
 function App() {
   const [agents, setAgents] = useState([])
@@ -9,6 +15,7 @@ function App() {
   const [error, setError] = useState(null)
   const [selectedDataId, setSelectedDataId] = useState('')
   const [trace, setTrace] = useState(null)
+  const [exposedAgents, setExposedAgents] = useState([])
 
 
   useEffect(() => {
