@@ -46,7 +46,7 @@ const features = [
   },
   {
     title: 'Policy violation detection',
-    desc: 'Every action is checked against compliance policy. Violations surface immediately, with full context on what happened and why it matters.',
+    desc: 'Actions are checked against compliance policies. Policy violations are surfaced with context on what happened and which policy was involved.',
   },
   {
     title: 'Shared-exposure analysis',
@@ -73,7 +73,7 @@ function Landing() {
           className="font-mono text-xs uppercase tracking-[0.3em] text-slate-muted opacity-0"
           style={{ animation: 'fadeUp 0.8s ease-out 0.1s forwards' }}
         >
-          AI Agent Governance
+          Agent Governance
         </p>
 
         <h1
@@ -88,9 +88,9 @@ function Landing() {
           className="mt-6 max-w-xl text-lg text-slate-muted opacity-0"
           style={{ animation: 'fadeUp 0.8s ease-out 0.5s forwards' }}
         >
-          WEXA Audit traces every action an AI agent takes back to the human who
-          authorized it — built on a graph database, because accountability was
-          never a row in a table.
+          A graph-based governance console for teams managing AI agents. Track
+recorded agent actions, the data they access, the policies involved,
+and the human who authorized them.
         </p>
 
         <div

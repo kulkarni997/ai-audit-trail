@@ -84,7 +84,7 @@ function Layout() {
           {navOpen && (
             <div>
               <p className="font-display text-lg font-semibold tracking-tight">
-                WEXA Audit
+                Agent Audit Trail
               </p>
               <p className="mt-1 text-xs text-white/50">Agent Governance Console</p>
             </div>
