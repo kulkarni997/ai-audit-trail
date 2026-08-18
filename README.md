@@ -34,10 +34,6 @@ The important information in an agent audit trail is the relationships between e
 For example, answering:
 
 > Who is accountable for an action that accessed this data?
-
-requires traversing:
-
-```text
 User → Agent → Action → DataResource
 
 ---
@@ -181,7 +177,7 @@ CognoDB — graph database
 │   Graph Database         │
 └──────────────────────────┘
 
-8. Setup & Running Locally
+## 8. Setup & Running Locally
 Prerequisites
 Node.js
 npm
@@ -249,7 +245,7 @@ npm run dev
 Frontend:http://localhost:5173
 
 
-9. Engineering & Security
+## 9. Engineering & Security
 Parameterized Cypher
 
 External values are passed to Cypher queries as parameters rather than being directly interpolated.
@@ -282,7 +278,7 @@ CognoDB credentials are stored in environment variables and are not committed to
 
 The frontend only receives the public backend API URL through VITE_API_URL.
 
-## Screenshots
+## 10. Screenshots
 
 ### Landing Page
 ![alt text](Landing.png)
