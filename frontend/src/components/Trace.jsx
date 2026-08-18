@@ -70,7 +70,7 @@ function Trace() {
       )}
 
       {trace && (
-        <div className="mt-8 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="mt-8 rounded-xl border border-hairline bg-ink-raised p-6">
           <div>
             <p className="text-sm text-slate-500">Data Resource</p>
             <p className="mt-1 font-semibold text-slate-900">{trace.dataName}</p>
