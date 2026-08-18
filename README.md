@@ -2,13 +2,13 @@
 
 A graph-based governance and audit trail application for tracking AI agent actions, data access, policy violations, and accountability using CognoDB.
 
-**Live Demo:** https://wexa-audit-trail.vercel.app/  
-**Repository:** [Add GitHub repository link]  
-**Screen Recording:** [Add Loom/video link]
+**Live Demo:** https://wexa-audit-trail.vercel.app/  (Note : The backend is hosted on Render's free tier and may take a short time to wake after inactivity.)
+**Repository:** (https://github.com/kulkarni997/wexa-audit-trail.git) 
+**Screen Recording:** (https://www.loom.com/share/069c0c9dc158419cbb00c5203fe3fa83)
 
 ---
 
-## 1. What It Does / Use Case
+## What it does?
 
 AI agents can perform actions on behalf of humans and interact with organizational data. When something needs to be investigated, it is important to understand not only what happened, but how the action is connected to the agent, the data involved, and the human who authorized the agent.
 
