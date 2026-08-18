@@ -56,7 +56,7 @@ function TraceIcon() {
 }
 
 const navItems = [
-  { to: '/', label: 'Dashboard', end: true, Icon: DashboardIcon },
+  { to: '/dashboard', label: 'Dashboard', end: true, Icon: DashboardIcon },
   { to: '/agents', label: 'Agents', Icon: AgentsIcon },
   { to: '/actions', label: 'Actions', Icon: ActionsIcon },
   { to: '/violations', label: 'Violations', Icon: ViolationsIcon },
@@ -74,7 +74,7 @@ function Layout() {
   }, [])
 
   return (
-    <div className="flex min-h-screen bg-paper font-body text-ink">
+    <div className="flex min-h-screen bg-ink font-body text-paper">
       <aside
         className={`flex shrink-0 flex-col border-r border-white/10 bg-ink/90 text-paper backdrop-blur-xl transition-all duration-300 ${
           navOpen ? 'w-60' : 'w-16'

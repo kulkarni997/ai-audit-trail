@@ -13,47 +13,42 @@ function Agents() {
       .finally(() => setLoading(false))
   }, [])
 
-  if (loading) {
-    return <p className="mt-8 text-slate-500">Loading agents...</p>
-  }
-
-  if (error) {
-    return <p className="mt-8 text-red-600">Error: {error}</p>
-  }
+  if (loading) return <p className="text-slate-muted">Loading agents…</p>
+  if (error) return <p className="text-signal-amber">Error: {error}</p>
 
   return (
     <>
-      <h2 className="text-xl font-semibold text-slate-900">AI Agents</h2>
-      <p className="mt-2 text-slate-500">
+      <h2 className="text-3xl font-semibold text-paper">AI Agents</h2>
+      <p className="mt-2 text-slate-muted">
         Every agent in the system, who authorized it, and how much it has done.
       </p>
 
       {agents.length === 0 && (
-        <p className="mt-6 text-sm text-slate-500">No agents found.</p>
+        <p className="mt-6 text-sm text-slate-muted">No agents found.</p>
       )}
 
       <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {agents.map((agent) => (
           <div
             key={agent.id}
-            className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
+            className="rounded-lg border border-hairline bg-ink-raised p-5 transition hover:border-slate-muted"
           >
             <div className="flex items-start justify-between">
-              <h3 className="font-semibold text-slate-900">{agent.name}</h3>
+              <h3 className="font-semibold text-paper">{agent.name}</h3>
               <span
-                className={`rounded-full px-3 py-1 text-xs font-medium ${
+                className={`rounded-full border px-3 py-1 text-xs font-medium ${
                   agent.status === 'active'
-                    ? 'bg-green-100 text-green-700'
-                    : 'bg-slate-200 text-slate-700'
+                    ? 'border-verified-teal/30 bg-verified-teal-soft text-verified-teal'
+                    : 'border-hairline bg-ink text-slate-muted'
                 }`}
               >
                 {agent.status}
               </span>
             </div>
 
-            <p className="mt-1 text-sm text-slate-500">{agent.type}</p>
-            <p className="mt-4 text-sm text-slate-600">Authorized by: {agent.authorizedBy}</p>
-            <p className="mt-1 text-sm text-slate-600">Actions: {agent.actionCount}</p>
+            <p className="mt-1 font-mono text-xs text-slate-muted">{agent.type}</p>
+            <p className="mt-4 text-sm text-slate-muted">Authorized by: <span className="text-paper">{agent.authorizedBy}</span></p>
+            <p className="mt-1 text-sm text-slate-muted">Actions: <span className="text-paper">{agent.actionCount}</span></p>
           </div>
         ))}
       </div>

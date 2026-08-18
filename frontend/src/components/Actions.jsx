@@ -18,21 +18,15 @@ function Actions() {
       .finally(() => setLoading(false))
   }, [])
 
-  if (loading) {
-    return <p className="mt-8 text-slate-500">Loading actions...</p>
-  }
+  if (loading) return <p className="text-slate-muted">Loading actions…</p>
+  if (error) return <p className="text-signal-amber">Error: {error}</p>
 
-  if (error) {
-    return <p className="mt-8 text-red-600">Error: {error}</p>
-  }
-
-  const visibleActions =
-    filter === 'all' ? actions : actions.filter((a) => a.status === filter)
+  const visibleActions = filter === 'all' ? actions : actions.filter((a) => a.status === filter)
 
   return (
     <>
-      <h2 className="text-xl font-semibold text-slate-900">All Actions</h2>
-      <p className="mt-2 text-slate-500">
+      <h2 className="text-3xl font-semibold text-paper">All Actions</h2>
+      <p className="mt-2 text-slate-muted">
         Every logged action taken by an agent. Click one to trace accountability.
       </p>
 
@@ -41,10 +35,10 @@ function Actions() {
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`rounded-full px-4 py-1.5 text-sm font-medium capitalize transition ${
+            className={`rounded-full border px-4 py-1.5 text-sm font-medium capitalize transition ${
               filter === f
-                ? 'bg-slate-900 text-white'
-                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
+                ? 'border-paper bg-paper text-ink'
+                : 'border-hairline bg-ink-raised text-slate-muted hover:border-slate-muted'
             }`}
           >
             {f}
@@ -52,41 +46,41 @@ function Actions() {
         ))}
       </div>
 
-      <div className="mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+      <div className="mt-6 overflow-hidden rounded-lg border border-hairline bg-ink-raised">
         {visibleActions.length === 0 && (
-          <p className="p-5 text-sm text-slate-500">No actions match this filter.</p>
+          <p className="p-5 text-sm text-slate-muted">No actions match this filter.</p>
         )}
         {visibleActions.map((action) => (
           <div
             key={action.id}
-            className="flex items-center justify-between gap-4 border-b border-slate-100 p-5 last:border-b-0"
+            className="flex items-center justify-between gap-4 border-b border-hairline p-5 last:border-b-0"
           >
             <div>
-              <h3 className="font-medium text-slate-900">{action.agentName}</h3>
+              <h3 className="font-medium text-paper">{action.agentName}</h3>
 
               <button
                 type="button"
                 onClick={() => navigate(`/trace?dataId=${action.dataId}`)}
-                className="mt-2 text-sm font-medium text-blue-600 hover:text-blue-800"
+                className="mt-2 text-sm font-medium text-verified-teal hover:underline"
               >
                 Trace accountability →
               </button>
 
-              <p className="mt-1 text-sm text-slate-600">
-                {action.type} → {action.dataName}
+              <p className="mt-1 text-sm text-slate-muted">
+                <span className="font-mono text-xs">{action.type}</span> → {action.dataName}
               </p>
-              <p className="mt-1 text-xs text-slate-400">
+              <p className="mt-1 font-mono text-xs text-slate-muted/70">
                 {new Date(action.timestamp).toLocaleString()}
               </p>
             </div>
 
             <span
-              className={`rounded-full px-3 py-1 text-xs font-medium ${
+              className={`rounded-full border px-3 py-1 text-xs font-medium ${
                 action.status === 'flagged'
-                  ? 'bg-red-100 text-red-700'
+                  ? 'border-signal-amber/30 bg-signal-amber-soft text-signal-amber'
                   : action.status === 'failed'
-                    ? 'bg-slate-200 text-slate-700'
-                    : 'bg-green-100 text-green-700'
+                    ? 'border-hairline bg-ink text-slate-muted'
+                    : 'border-verified-teal/30 bg-verified-teal-soft text-verified-teal'
               }`}
             >
               {action.status}

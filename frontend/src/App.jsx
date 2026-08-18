@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import Landing from './components/Landing'
 import Layout from './components/Layout'
 import Dashboard from './components/Dashboard'
 import Agents from './components/Agents'
@@ -9,8 +10,9 @@ import Trace from './components/Trace'
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Dashboard />} />
+      <Route path="/" element={<Landing />} />
+      <Route element={<Layout />}>
+        <Route path="dashboard" element={<Dashboard />} />
         <Route path="agents" element={<Agents />} />
         <Route path="actions" element={<Actions />} />
         <Route path="violations" element={<Violations />} />
