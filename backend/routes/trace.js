@@ -13,11 +13,11 @@
 
 const express = require('express');
 const { runQuery } = require('../db');
-
+const { validateParam } = require('../validation');
 const router = express.Router();
 
 // GET /api/trace/data/:dataId
-router.get('/data/:dataId', async (req, res, next) => {
+router.get('/data/:dataId', validateParam('dataId'), async (req, res, next) => {
   try {
     const records = await runQuery(
       `MATCH (u:User)-[:AUTHORIZED]->(agent:Agent)-[:EXECUTED]->(action:Action)-[:ACCESSED]->(data:DataResource {id: $dataId})

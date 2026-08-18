@@ -16,7 +16,14 @@ const rateLimit = require('express-rate-limit');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors());
+const allowedOrigin = process.env.FRONTEND_URL;
+app.use(
+  cors(
+    allowedOrigin
+      ? { origin: allowedOrigin }
+      : {}
+  )
+);
 app.use(express.json());
 
 const apiLimiter = rateLimit({
