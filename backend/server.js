@@ -11,12 +11,22 @@ const agentsRouter = require('./routes/agents');
 const actionsRouter = require('./routes/actions');
 const traceRouter = require('./routes/trace');
 const violationsRouter = require('./routes/violations');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many requests, please try again shortly.' },
+});
+app.use('/api', apiLimiter);
 
 // Simple health check — also useful for the frontend to detect "DB unreachable"
 // state gracefully, per the assignment's error-handling requirement.
